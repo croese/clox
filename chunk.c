@@ -36,3 +36,18 @@ int addConstant(Chunk* chunk, Value value) {
   writeValueArray(&chunk->constants, value);
   return chunk->constants.count - 1;
 }
+
+void writeConstant(Chunk* chunk, Value value, int line) {
+  int constant = addConstant(chunk, value);
+  if (constant < 256) {
+    // short const
+    writeChunk(chunk, OP_CONSTANT, line);
+    writeChunk(chunk, constant, line);
+  } else {
+    // long const
+    writeChunk(chunk, OP_CONSTANT_LONG, line);
+    writeChunk(chunk, (constant & 0xFF0000) >> 16, line);
+    writeChunk(chunk, (constant & 0xFF00) >> 8, line);
+    writeChunk(chunk, (constant & 0xFF), line);
+  }
+}
