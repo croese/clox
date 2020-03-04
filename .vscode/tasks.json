@@ -1,27 +1,28 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Build with Clang",
-            "type": "shell",
-            "command": "clang",
-            "args": [
-                "-std=c11",
-                "main.c",
-                "chunk.c",
-                "debug.c",
-                "memory.c",
-                "value.c",
-                "-o",
-                "clox",
-                "--debug",
-                "-Wall",
-                "-Werror"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build with Clang",
+      "type": "shell",
+      "command": "clang",
+      "args": [
+        "-std=c11",
+        "main.c",
+        "chunk.c",
+        "debug.c",
+        "memory.c",
+        "value.c",
+        "vm.c",
+        "-o",
+        "clox",
+        "--debug",
+        "-Wall",
+        "-Werror"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
 }
