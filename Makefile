@@ -1,0 +1,9 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -std=c23 -pedantic
+objects = main.o chunk.o memory.o debug.o value.o
+
+clox: $(objects)
+	$(CC) $(CFLAGS) $^ -o $@
+
+clean:
+	rm $(objects) clox
